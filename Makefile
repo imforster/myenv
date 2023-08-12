@@ -1,11 +1,16 @@
 all: setup 
 
-setup: setup-brew
+setup: setup-python setup-vscode
 
-setup-brew:
-	@echo "Hello"
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-shell:
+setup-python: $(eval SHELL:=/bin/bash)
+	@echo "Setup python.."
+	brew install python
+
+setup-vscode:
+	@echo "Setup  vscode.."
+	brew install --cask visual-studio-code
+
+py-shell:
 	python3
 
 help:
